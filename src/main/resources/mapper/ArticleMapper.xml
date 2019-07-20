@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ncwu.mapper.ArticleMapper">
+	<select id="selectByTitAndUserId" parameterType="com.ncwu.pojo.Article" resultType="com.ncwu.pojo.Article">
+			SELECT
+			article_id articleId, 
+			article_title articleTitle,
+			user_id userId,
+			article_content articleContent,
+			article_type articleType,
+			article_time articleTime,
+			article_states articleStates
+			FROM article
+			<where>
+			<if test="articleTitle!=null and articleTitle!=''">
+				article_title like '%${articleTitle}%'
+			</if>
+			<if test="userId!=null and userId!=''">
+				AND user_id=#{userId}
+			</if>
+			</where>
+	</select>
+	
+	<select id="selectByAtype" parameterType="com.ncwu.pojo.Article"  resultType="com.ncwu.dto.ArticleTandNum">
+			SELECT article_type articleType,
+			COUNT(*) articleNum  
+			FROM article
+			<where>
+			<if test="userId!=null and userId!=''">
+				user_id=#{userId}
+			</if>
+			</where>
+			GROUP BY article_type
+	</select>
+</mapper>

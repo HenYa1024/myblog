@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>阅读全文</title>
+		<link href="/myblog/static/css/base.css" rel="stylesheet">
+		<link href="/myblog/static/css/info.css" rel="stylesheet">
+		<link href="/myblog/static/css/newheader.css" rel="stylesheet" />
+		<link href="/myblog/static/css/m.css" rel="stylesheet">
+		<link href="/myblog/static/css/right.css" rel="stylesheet">
+		<link href="/myblog/static/css/calendar.css" rel="stylesheet">
+		<link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   		<!--Valine 的核心代码库:-->
+    	<script src="/myblog/static/valine/Valine.min.js"></script>
+		<script>
+			window.onload = function() {
+				var oH2 = document.getElementsByTagName("h2")[0];
+				var oUl = document.getElementsByTagName("ul")[0];
+				oH2.onclick = function() {
+					var style = oUl.style;
+					style.display = style.display == "block" ? "none" : "block";
+					oH2.className = style.display == "block" ? "open" : ""
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="hidden" value="${rc.contextPath}" id="basePath" />
+		<header>
+			<div class="top">
+				<ul style="float: left;">
+					<li id="logos">
+						<img src="/myblog/static/images/logos.png" />
+					</li>
+				</ul>
+				<ul>
+					<li>
+  						<a href="index.html">首页</a>
+  					</li>
+	  				<li>
+	  					<a href="javascript:void(0)" onclick="writeblog()">写博客</a>
+	  				</li>
+	  				<li>
+		  				<a href="javascript:void(0)" onclick="myHomePage()">我的主页</a>
+		  			</li>
+	  				<li>
+	  					<a href="javascript:void(0)" onclick="myHistory()">我的足迹</a>
+	  				</li>
+	  				<li>
+	  					<a href="javascript:void(0)" onclick="myCenter()">个人中心</a>
+			  		</li>
+			  		<li id="loginAndReg" hidden="hidden">
+			  			<a href="login.html">登录/注册</a>
+			  		</li>
+			  		<li id="exit" hidden="hidden">
+			  			<a href="index.html" onclick="exit();">退出</a>
+			  		</li>
+				</ul>
+			</div>
+		</header>
+		<article>
+			<div class="innerArticle">
+				<div class="innerleft">
+					<div class="infos">
+						<div class="newsview" id="articleContent">
+							<h2 class="intitle">阅读全文</h2>
+							<h3 class="news_title"></h3>
+							<div class="news_author"><span class="au01"></span><span class="au02"></span></div>
+							<div class="news_infos">
+							<div id="test1">
+               					<textarea style="display:none;" name="test-editormd-markdown-doc" id="ArticleContent"></textarea>               
+            				</div>
+						</div>
+						</div>
+					</div>
+					<div class="news_pl">
+						<h2>文章评论</h2>
+						<div class="outComment" hidden="hidden">
+							<div class="comment"></div>
+						    <script>
+						        new Valine({
+						            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+						            av: AV, 
+						            el: '.comment', // 
+						            app_id: '9gya1DD3pdRqyUzoC1btkax0-gzGzoHsz', // 这里填写上面得到的APP ID
+						            app_key: 'cF8kb7QFpAyvWBH9Y0AViMUP', // 这里填写上面得到的APP KEY
+						            placeholder: 'ヾﾉ≧∀≦)o你有什么想对作者说的', // [v1.0.7 new]留言框占位提示文字
+						        	path: window.location.search //保证每个文章页路径的唯一性
+						        });
+						    </script>
+						</div>
+						<div class="login_tips" style="font-weight:bold;text-align: center" hidden="hidden">
+						用户登录后才能发表评论，请 
+						<a rel="nofollow"href="javascript:void(0)" onclick="toLogin()" class="underline" style="color: red;">登录</a>
+						 或 
+						<a rel="nofollow" href="register.html" class="underline" style="color: red;">注册</a>，<a href="index.html" style="color: red;">访问</a>网站首页。
+						</div>
+						<div class="fbComment" hidden="hidden">
+							<p style="font-weight:bold;text-align: center">
+							该博主设置了禁止评论！
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="rightmain">
+					<div class="rightmain1">
+						<script charset="Shift_JIS" src="/myblog/static/js/clock.js"></script>
+					</div>
+					<div class="rightmain2">
+						<h3>公告</h3>
+						<ul>
+							<li>昵称：<span class="author1"></span></li>
+							<li>粉丝：<span class="fansNum"></span></li>
+							<li>关注：<span class="atNum"></span></li>
+							<li hidden="hidden" id="isAttention">
+								<a href="javascript:void(0)" style="color: red;" onclick="addAttention();">+加关注</a>
+							</li>
+							<li hidden="hidden" id="noAttention">
+								<a href="javascript:void(0)" style="color: red;" onclick="delAttention();">取消关注</a>
+							</li>
+						</ul>
+					</div>
+					<div id="calendar" class="calendar"></div>
+				</div>
+			</div>
+		</article>
+		<script src="/myblog/static/js/jquery.js"></script>
+		<script src="/myblog/static/js/calendar.js"></script>
+		
+		<script type="text/javascript" src="${rc.contextPath}/static/js/vue.js"></script>
+		<script type="text/javascript" src="${rc.contextPath}/static/js/index.js"></script>
+        <script src="/myblog/static/lib/marked.min.js"></script>
+        <script src="/myblog/static/lib/prettify.min.js"></script>
+        
+        <script src="/myblog/static/lib/raphael.min.js"></script>
+        <script src="/myblog/static/lib/underscore.min.js"></script>
+        <script src="/myblog/static/lib/sequence-diagram.min.js"></script>
+        <script src="/myblog/static/lib/flowchart.min.js"></script>
+        <script src="/myblog/static/lib/jquery.flowchart.min.js"></script>
+
+        <script src="/myblog/static/js/editormd.js"></script>
+        <script type="text/javascript" src="${rc.contextPath}/static/js/info.js"></script>
+	</body>
+
+</html>

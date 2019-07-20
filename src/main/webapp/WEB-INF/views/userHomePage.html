@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户主页</title>
+<link href="/myblog/static/css/base.css" rel="stylesheet">
+<link href="/myblog/static/css/index.css" rel="stylesheet">
+<link href="/myblog/static/css/m.css" rel="stylesheet">
+<link href="/myblog/static/css/newheader.css" rel="stylesheet">
+<link href="/myblog/static/css/userHomePage.css" rel="stylesheet">
+<link href="/myblog/static/css/calendar.css" rel="stylesheet">
+<script src="/myblog/static/js/jquery.js"></script>
+<script src="/myblog/static/js/jquery.easyfader.min.js"></script>
+<script>
+window.onload = function ()
+{
+	var oH2 = document.getElementsByTagName("h2")[0];
+	var oUl = document.getElementsByTagName("ul")[0];
+	oH2.onclick = function ()
+	{
+		var style = oUl.style;
+		style.display = style.display == "block" ? "none" : "block";
+		oH2.className = style.display == "block" ? "open" : ""
+	}
+}
+</script>
+</head>
+<body>
+ <input type="hidden" id="basePath" value="${rc.contextPath}" />
+	<header>
+		<div class="top">
+			<ul style="float: left;">
+				<li id="logos">
+					<img src="/myblog/static/images/logos.png" />
+				</li>
+			</ul>
+			<ul>
+				<li>
+  					<a href="index.html">首页</a>
+  				</li>
+	  			<li>
+	  				<a href="javascript:void(0)" onclick="writeblog()">写博客</a>
+	  			</li>
+	  			<li>
+		  			<a href="javascript:void(0)" onclick="myHomePage()">我的主页</a>
+		  		</li>
+	  			<li>
+	  				<a href="javascript:void(0)" onclick="myHistory()">我的足迹</a>
+	  			</li>
+	  			<li>
+	  				<a href="javascript:void(0)" onclick="myCenter()">个人中心</a>
+			  	</li>
+			  	<li id="loginAndReg" hidden="hidden">
+			  		<a href="login.html">登录/注册</a>
+			  	</li>
+			  	<li id="exit" hidden="hidden">
+			  		<a href="index.html" onclick="exit();">退出</a>
+			  	</li>
+			</ul>
+		</div>
+	</header>
+<article>
+<div class="outBlog"> 
+  <div class="innerBlog">
+  <div class="newblogs1" id="blogList">
+    <h2 class="hometitle">{{userName}}的主页</h2>
+    <ul class="showPage" hidden="hidden">
+		<li v-for="blog in blogs">
+			<h3 class="blogtitle"><span><a href="javascript:void(0)" title="css3" target="_blank"  class="classname">个人博客</a></span><a href="javascript:void(o);" onclick="toReadBlog({{blog.articleId}});" article-id="{{blog.articleId}}" target="_blank" >{{blog.articleTitle}}</a></h3>
+			<div class="autor"><span class="lm f_l"></span><span class="dtime f_l">{{blog.articleTime}}</span><span class="viewnum f_l">浏览（<a href="/">{{blog.articleNum}}</a>）</span><span class="f_r"><a href="javascript:void(o);" onclick="toReadBlog({{blog.articleId}});" article-id="{{blog.articleId}}" class="more">阅读原文>></a></span></div>
+			<div class="line"></div>
+		</li>
+	</ul>
+	<p class="noBlog" style="font-weight:bold;text-align: center" hidden="hidden">该用户暂未发布博客！</p> 
+  </div>
+  </div>
+		<div class="rightmain">
+					<div class="rightmain1">
+						<script charset="Shift_JIS" src="/myblog/static/js/clock.js"></script>
+					</div>
+					<div class="rightmain2">
+						<h3>公告</h3>
+						<ul>
+							<li>昵称：<span class="author1"></span></li>
+							<li>粉丝：<span class="fansNum"></span></li>
+							<li>关注：<span class="atNum"></span></li>
+							<li hidden="hidden" id="isAttention">
+								<a href="javascript:void(0)" style="color: red;" onclick="addAttention();">+加关注</a>
+							</li>
+							<li hidden="hidden" id="noAttention">
+								<a href="javascript:void(0)" style="color: red;" onclick="delAttention();">取消关注</a>
+							</li>
+						</ul>
+					</div>
+			<div id="calendar" class="calendar"></div>
+		</div>
+	</div>
+</article>
+		<script src="/myblog/static/js/jquery.js"></script>
+		<script src="/myblog/static/js/calendar.js"></script>
+		<script type="text/javascript" src="${rc.contextPath}/static/js/vue.js"></script>
+		<script type="text/javascript" src="${rc.contextPath}/static/js/index.js"></script>
+		<script type="text/javascript" src="${rc.contextPath}/static/js/homePage.js"></script>
+</body>
+</html>

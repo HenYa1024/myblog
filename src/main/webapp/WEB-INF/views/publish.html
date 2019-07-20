@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>发布成功</title>
+		<link rel="stylesheet" href="${rc.contextPath}/static/css/publish.css"/>
+		<script src="${rc.contextPath}/static/js/jquery.js"></script>
+	</head>
+	<body>
+		<div id="alertSuccess" data-track-view="{&quot;mod&quot;:&quot;popu_766&quot;,&quot;con&quot;:&quot;,,B_&quot;}" class="finished-box" style="">
+			<div class="pos-box">
+				<div class="pos-top">
+					<!---->
+					<a href="houtai.html" data-track-click="{&quot;mod&quot;:&quot;popu_766&quot;,&quot;con&quot;:&quot;,,B_manageArticle&quot;}" class="manage-article">
+						<svg t="1551855786171" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15996" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" class="icon">
+							<path d="M399.936 511.786667L736.213333 846.912c20.885333 20.842667 20.970667 54.656 0.192 75.584l-0.192 0.213333a53.909333 53.909333 0 0 1-75.989333 0L287.786667 551.552a53.418667 53.418667 0 0 1-15.701334-39.765333 53.418667 53.418667 0 0 1 15.701334-39.765334L660.224 100.885333a53.866667 53.866667 0 0 1 75.989333 0c20.885333 20.821333 20.970667 54.656 0.192 75.562667l-0.192 0.192-336.277333 335.146667z" fill="" p-id="15997"></path>
+						</svg>管理博文</a>
+					<div class="text-center title" id="title"></div>
+					<div class="text-center status-box">
+						<a href="javascript:void(o);" data-track-click="{&quot;mod&quot;:&quot;popu_766&quot;,&quot;con&quot;:&quot;,,B_toArticle&quot;}" class="toarticle" onclick="readblog();"><i class="icon-success-font c-green"></i>发布成功并查看文章
+							<svg t="1552370226457" viewBox="0 0 1210 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8082" xmlns:xlink="http://www.w3.org/1999/xlink" width="236.328125" height="200" class="icon">
+								<path d="M456.238545 512L64.884364 109.754182A65.629091 65.629091 0 0 1 64.605091 18.990545L64.884364 18.804364a61.44 61.44 0 0 1 88.436363 0l433.431273 445.533091A64.977455 64.977455 0 0 1 605.090909 512a65.070545 65.070545 0 0 1-18.338909 47.755636l-433.431273 445.44a61.44 61.44 0 0 1-88.436363 0 65.629091 65.629091 0 0 1-0.279273-90.763636l0.279273-0.093091L456.145455 512z" p-id="8083"></path>
+								<path d="M1014.784 512L623.429818 109.754182a65.629091 65.629091 0 0 1-0.279273-90.763637l0.279273-0.186181a61.44 61.44 0 0 1 88.436364 0l433.431273 445.533091a64.977455 64.977455 0 0 1 18.338909 47.662545 65.070545 65.070545 0 0 1-18.338909 47.755636l-433.431273 445.44a61.44 61.44 0 0 1-88.436364 0 65.629091 65.629091 0 0 1-0.279273-90.763636l0.279273-0.093091L1014.690909 512z" p-id="8084"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+				<div class="pos-bottom pos-bottom-plan-a">
+					<div class="opt-box text-center">
+						<button data-track-click="{&quot;mod&quot;:&quot;popu_766&quot;,&quot;con&quot;:&quot;,,B_writeArticle&quot;}" class="btn-finish mr24" onclick="AgainWrite()">再写一篇</button> 
+					<!---->
+				</div>
+			</div>
+		</div>
+		</div>
+		<script type="text/javascript">
+			function AgainWrite(){
+				window.location.href="/myblog/writeblog.html";
+			}
+			var title = window.location.href.split("=")[2];
+			$("#title").text(decodeURI(title)); 
+		    var startIndex = window.location.href.indexOf("=");
+			var endIndex = window.location.href.indexOf("&");
+			var articleId =  window.location.href.substring(startIndex+1,endIndex); 
+			function readblog(){
+				window.location.href="/myblog/info.html?articleId="+articleId;
+			}
+		</script>
+	</body>
+</html>

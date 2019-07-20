@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ncwu.mapper.AttentionMapper">
+	<select id="selectByIds" parameterType="com.ncwu.pojo.Attention" resultType="com.ncwu.pojo.Attention">
+			select attention_id attentionId,
+			user_id userId,
+			attention_user_id attentionUserId,
+			attention_user_name attentionUserName 
+			from attention 
+			where user_id=#{userId} and attention_user_id=#{attentionUserId}
+	</select>
+	<delete id="delAttention" parameterType="com.ncwu.pojo.Attention" >
+			delete from attention
+			where user_id=#{userId} and attention_user_id=#{attentionUserId}
+	</delete>
+	<select id="selectByAnAndUid" parameterType="com.ncwu.pojo.Attention" resultType="com.ncwu.pojo.Attention">
+			select attention_id attentionId,
+			attention_user_name attentionUserName 
+			from attention 
+			<where>
+			<if test="attentionUserName!=null and attentionUserName!=''">
+				attention_user_name like '%${attentionUserName}%'
+			</if>
+			<if test="userId!=null and userId!=''">
+				AND user_id=#{userId}
+			</if>
+			</where>
+	</select>
+</mapper>

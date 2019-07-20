@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ncwu.mapper.ArtypeMapper">
+	<select id="selectByTnAndUserId" parameterType="com.ncwu.pojo.Artype" resultType="com.ncwu.pojo.Artype">
+			SELECT 
+			type_id typeId,
+			type_name typeName,
+			user_id userId
+			FROM artype
+			<where>
+			<if test="typeName!=null and typeName!=''">
+				type_name like '%${typeName}%'
+			</if>
+			<if test="userId!=null and userId!=''">
+				AND user_id=#{userId}
+			</if>
+			</where>
+	</select>
+</mapper>

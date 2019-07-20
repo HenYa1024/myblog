@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+		<meta charset="utf-8">
+		<title>登录界面</title>
+		<link rel="stylesheet" href="/myblog/static/css/reset.css" />
+		<link rel="stylesheet" href="/myblog/static/css/common.css" />
+		<link rel="stylesheet" href="/myblog/static/css/font-awesome.min.css" />
+	</head>
+	<body>
+	<input type="hidden" value="${rc.contextPath}" id="basePath"/>
+		<div class="wrap login_wrap">
+			<div class="content">
+				<div class="logo"></div>
+				<div class="login_box">	
+					
+					<div class="login_form">
+						<div class="login_title">
+							登录
+						</div>
+						<form action="#" method="post">
+							
+							<div class="form_text_ipt">
+								<input name="username" id="userName" type="text" placeholder="用户名">
+							</div>
+							<div class="ececk_warning"><span>用户名不能为空</span></div>
+							<div class="form_text_ipt">
+								<input name="password" id="userPwd" type="password" placeholder="密码">
+							</div>
+							<div class="ececk_warning"><span>密码不能为空</span></div>
+							<div class="form_check_ipt">
+								<div class="left check_left">
+								</div>
+							</div>
+							<div class="form_btn">
+								<button type="button" onclick="toLogin();">登录</button>
+							</div>
+							<div class="form_reg_btn">
+								<span>还没有帐号？</span><a href="register.html">马上注册</a>
+								<br />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="/myblog/static/js/jquery.js" ></script>
+		<script type="text/javascript" src="/myblog/static/js/common.js" ></script>
+		<script type="text/javascript" src="/myblog/static/js/login.js" ></script>
+		<div style="text-align:center;">
+</div>
+<script type="text/javascript">
+	$("body").keydown(function() {
+	    if (event.keyCode == "13" || event.keyCode == 108) {//keyCode=13是回车键
+	    	toLogin();
+	    }
+	});
+</script>
+	</body>
+</html>

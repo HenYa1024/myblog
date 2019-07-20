@@ -1,0 +1,34 @@
+.rightmain {
+	width: 218px;
+	min-height: 400px;
+	padding: 0px 0 0px 0px;
+	float: right;
+	/*margin-top: -470px;*/
+	/*margin-right: 75px;*/
+	overflow: hidden;
+	word-break: break-all;
+	border-width: 1px;
+	border-style: dotted ;
+  	border-color:#ff0000;
+}
+.rightmain1 {
+	width: 150px;
+	min-height: 80px;
+	padding: 0px 0 0px 0px;
+	margin-top: 0px;
+	margin-left: 32px;
+}
+
+.rightmain2{
+	margin-left: 10px;
+	width: 210px;
+	min-height: 150px;
+	margin-top: -15px;
+	margin-right: -5px;
+}
+.rightmain2 ul {
+	font-size: 16px;
+	font-weight: 549;
+	margin-left: -20px;
+	margin-top: -10px;
+}

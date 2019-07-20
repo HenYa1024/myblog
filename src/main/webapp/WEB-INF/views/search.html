@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>搜索结果</title>
+<link href="/myblog/static/css/base.css" rel="stylesheet">
+<link href="/myblog/static/css/index.css" rel="stylesheet">
+<link href="/myblog/static/css/m.css" rel="stylesheet">
+<link href="/myblog/static/css/newheader.css" rel="stylesheet">
+<script src="/myblog/static/js/jquery.js"></script>
+<script src="/myblog/static/js/jquery.easyfader.min.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/static/js/vue.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/static/js/search.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/static/js/index.js"></script>
+<script>
+window.onload = function ()
+{
+	var oH2 = document.getElementsByTagName("h2")[0];
+	var oUl = document.getElementsByTagName("ul")[0];
+	oH2.onclick = function ()
+	{
+		var style = oUl.style;
+		style.display = style.display == "block" ? "none" : "block";
+		oH2.className = style.display == "block" ? "open" : ""
+	}
+}
+</script>
+</head>
+<body>
+ <input type="hidden" id="basePath" value="${rc.contextPath}" />
+	<header>
+		<div class="top">
+			<ul style="float: left;">
+				<li id="logos">
+					<img src="/myblog/static/images/logos.png" />
+				</li>
+			</ul>
+			<ul>
+				<li>
+  					<a href="index.html">首页</a>
+  				</li>
+  				<li>
+  					<a href="javascript:void(0)" onclick="writeblog()">写博客</a>
+  				</li>
+  				<li>
+		  			<a href="javascript:void(0)" onclick="myHomePage()">我的主页</a>
+		  		</li>
+  				<li>
+  					<a href="javascript:void(0)" onclick="myHistory()">我的足迹</a>
+  				</li>
+	  			<li>
+	  				<a href="javascript:void(0)" onclick="myCenter()">个人中心</a>
+			  	</li>
+		  		<li id="loginAndReg" hidden="hidden">
+		  			<a href="login.html">登录/注册</a>
+		  		</li>
+		  		<li id="exit" hidden="hidden">
+		  			<a href="index.html" onclick="exit();">退出</a>
+		  		</li>
+			</ul>
+		</div>
+	</header>
+<article class="article1">
+  <div class="newblogs" id="searchRes">
+    <h2 class="hometitle">搜索结果</h2>
+    <ul>
+      <li v-for="first in res">
+        <h3 class="blogtitle"><span><a href="javascript:void(0)" title="css3" target="_blank"  class="classname">个人博客</a></span><a href="javascript:void(o);" onclick="toReadBlog({{first.articleId}});" article-id="{{first.articleId}}" target="_blank" >{{first.articleTitle}}</a></h3>
+          <!-- <p class="limitNum">{{first.articleContent}}</p> -->
+        <div class="autor"><span class="lm f_l"></span><span class="dtime f_l">{{first.articleTime}}</span><span class="viewnum f_l">浏览（<a href="#">{{first.articleNum}}</a>）</span><span class="f_r"><a href="javascript:void(o);" onclick="toReadBlog({{first.articleId}});" article-id="{{first.articleId}}" class="more">阅读原文>></a></span></div>
+        <div class="line"></div>
+      </li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>

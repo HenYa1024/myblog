@@ -1,0 +1,5 @@
+.newblogs { background: #fff; overflow: hidden; width: 100%; float: left; }
+.newblogs ul { padding: 10px; overflow: hidden }
+.newblogs li { border-bottom: #ccc 1px solid; margin-bottom: 10px; overflow: hidden; }
+.line { width: 0px; height: 2px; background: #333; -moz-transition: all 5s ease; -webkit-transition: all 5s ease; transition: all 5s ease; }/* line ���*/
+.newblogs li:hover .line { width: 100%; }
